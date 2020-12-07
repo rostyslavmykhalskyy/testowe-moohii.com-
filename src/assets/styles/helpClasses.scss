@@ -1,0 +1,56 @@
+.flex {
+    display: flex;
+}
+
+.f-order-negative {
+    order: -1;
+}
+
+.flex-sb {
+    @extend .flex;
+    justify-content: space-between;
+}
+
+.flex-sa {
+    @extend .flex;
+    justify-content: space-around;
+}
+
+.flex-fs {
+    @extend .flex;
+    align-items: flex-start;
+}
+
+.flex-fs-sb {
+    @extend .flex-fs,
+    .flex-sb;
+}
+
+
+.flex-c {
+    @extend .flex;
+    align-items: center;
+}
+
+.flex-c-sb {
+    @extend .flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.flex-c-r {
+    @extend .flex;
+    align-items: center;
+    justify-content: right;
+}
+
+.flex-c-c {
+    @extend .flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.flex-wrap {
+    @extend .flex;
+    flex-wrap: wrap;
+}

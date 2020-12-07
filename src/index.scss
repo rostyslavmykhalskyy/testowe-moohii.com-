@@ -1,0 +1,327 @@
+// Reset styles & fonts
+@import "./assets/styles/reset.css";
+@import "./assets/fonts/fontFace.css";
+
+// Helpful resolves
+@import "./assets/styles/variables.scss";
+@import "./assets/styles/helpClasses.scss";
+
+// //Modules
+// @import "./assets/styles/modules/header.scss";
+// @import "./assets/styles/modules/footer.scss";
+// @import "./assets/styles/modules/products.scss";
+
+// // Components
+// @import "./assets/styles/components/buttons.scss";
+// @import "./assets/styles/components/icons.scss";
+// @import "./assets/styles/components/card.scss";
+// @import "./assets/styles/components/filters.scss";
+
+
+//Main styles[Start]
+html {
+  font-size: 16px;
+}
+
+h1,
+h2,
+h3,
+button {
+  color: $headlines-color;
+  font-family: 'ralewaymedium';
+}
+
+h4,
+p,
+input {
+  color: $text-color;
+  font-family: 'ralewaylight';
+}
+
+input,
+button {
+  padding: 1rem;
+  border: unset;
+  border-radius: 5px;
+  outline: none;
+}
+
+button {
+  text-transform: uppercase;
+  background: $gradient;
+  cursor: pointer;
+
+  &:hover {
+    position: relative;
+    overflow: hidden;
+
+    &::after {
+      content: "";
+      display: block;
+      width: 1rem;
+      height: 4rem;
+      position: absolute;
+      top: -0.5rem;
+      left: -2rem;
+      transform: rotate(30deg);
+      background-color: #ffffff56;
+      animation-name: shiny;
+      animation-duration: 1s;
+    }
+  }
+
+  &:disabled {
+    background: $gradient2;
+    cursor: no-drop;
+
+    &::after {
+      content: "";
+      display: none;
+    }
+  }
+}
+
+@keyframes shiny {
+  0% {
+    left: -2rem;
+  }
+
+  100% {
+    left: 120%;
+  }
+}
+
+//Main styles[End]
+
+
+//Header[Start]
+.header {
+  padding: 1rem;
+  position: relative;
+  background-color: $black-color;
+
+  &__search {
+    @extend .flex-c-c;
+
+    input {
+      width: 40%;
+      margin-right: 1.5rem;
+    }
+  }
+}
+
+.autocomplete {
+  width: 40%;
+  height: 100%;
+  position: absolute;
+  right: 50%;
+  bottom: 0;
+  transform: translate(50%, 100%);
+  z-index: 1;
+}
+
+.autocomplete-card {
+  @extend .flex-c-sb;
+  padding: 1rem;
+  background: $gradient2;
+  cursor: pointer;
+
+  &:hover {
+    background: $gradient;
+  }
+}
+
+//Header[End]
+
+//Main[Start]
+main {
+  margin: 8vh 0;
+}
+
+.songs {
+  @extend .flex-wrap;
+  width: 80%;
+  margin: 0 auto;
+  box-sizing: border-box;
+}
+
+.song-card {
+  width: 100/4-3%;
+  margin: 0 4% 10vh 0;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  background: $card-color;
+  box-sizing: border-box;
+  cursor: pointer;
+
+
+  &:nth-child(4n) {
+    margin-right: 0;
+  }
+
+  &__title {
+    padding: 1rem 0.5rem;
+
+    h3 {
+      font-size: 1.2rem;
+    }
+
+    h4 {
+      margin-top: 0.3rem;
+      font-size: .9rem;
+    }
+  }
+
+  &__picture {
+    img {
+      width: 100%;
+      height: 100%;
+      display: block;
+    }
+  }
+}
+
+.toTop {
+  width: 3rem;
+  height: 3rem;
+  position: fixed;
+  padding: 0;
+  right: 3%;
+  bottom: 10vh;
+  border-radius: 2rem;
+  font-size: 1.5rem;
+
+  &:hover {
+    position: fixed;
+  }
+}
+
+.loading {
+  width: 100%;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: rgba(126, 126, 126, 0.483);
+}
+
+.lds-dual-ring {
+  width: 80px;
+  height: 80px;
+  margin: 50vh auto 0;
+  display: block;
+  transform: translateY(-50%);
+}
+
+.lds-dual-ring:after {
+  content: " ";
+  display: block;
+  width: 64px;
+  height: 64px;
+  margin: 8px;
+  border-radius: 50%;
+  border: 6px solid #fff;
+  border-color: #fff transparent #fff transparent;
+  animation: lds-dual-ring 1.2s linear infinite;
+}
+
+@keyframes lds-dual-ring {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.songView {
+  @extend .flex-fs,
+  .flex-wrap;
+  width: 80%;
+  margin: 0 auto;
+
+  &__picture {
+    width: 20%;
+
+    img {
+      width: 100%;
+    }
+  }
+
+  &__title {
+    width: 80%;
+    padding-left: 4%;
+    box-sizing: border-box;
+
+    audio {
+      margin-top: 8vh;
+    }
+
+    h2 {
+      font-size: 3rem;
+    }
+
+    h3 {
+      font-size: 1.5rem;
+    }
+  }
+
+  &__details {
+    margin-top: 5vh;
+
+    p {
+      margin-bottom: 1vh;
+
+      &:last-of-type {
+        margin-bottom: 0vh;
+      }
+    }
+  }
+}
+
+//Main[End]
+
+@media (max-width: 991px) {
+  .header__search input {
+    width: 50%
+  }
+
+  .autocomplete {
+    width: 70%;
+  }
+
+  .songs {
+    width: 90%;
+  }
+
+  .song-card {
+    width: 46%;
+    margin-right: 4%;
+
+    &:nth-of-type(even) {
+      margin-right: 0;
+
+    }
+  }
+
+  .songView__picture {
+    width: 40%;
+    margin: 0 auto 3vh;
+  }
+
+  .songView__title,
+  .songView__details {
+    width: 100%;
+  }
+
+  .songView__title {
+    text-align: center;
+    padding: 0;
+
+    audio {
+      width: 100%;
+    }
+  }
+}
